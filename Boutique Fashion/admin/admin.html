@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Boutique Fashion</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+ <header>
+  <div class="logo">Boutique Fashion</div>
+
+  <nav>
+       <ul>
+            <li><a href="orders.html">📊 Commandes clients</a></li>
+            <li><a href="stats.html">Statistiques des ventes</a></li>
+       </ul>
+  </nav>
+</header>   
+
+<section class="admin-container">
+
+    <h2>Admin - Gestion des produits</h2>
+
+    <!-- 🔍 RECHERCHE (NOUVEAU) -->
+    <input type="text" id="search-admin" placeholder="🔍 Rechercher un produit...">
+
+    <!-- 🔥 FORMULAIRE -->
+    <input type="text" id="name" placeholder="Nom du produit">
+    <input type="text" id="category" placeholder="Catégorie">
+    <input type="number" id="price" placeholder="Prix">
+    <input type="text" id="img" placeholder="URL image">
+    <input type="text" id="description" placeholder="Description du produit">
+
+    <!-- 🔥 BOUTONS -->
+    <button onclick="addOrUpdateProduct()">Ajouter / Modifier</button>
+
+    <hr>
+
+    <!-- 🔥 LISTE PRODUITS -->
+    <div id="products-list"></div>
+
+</section>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

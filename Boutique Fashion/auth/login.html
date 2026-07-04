@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion - Boutique Fashion</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="login-page">
+
+<header>
+    <div class="logo">Boutique Fashion</div>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Accueil</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 🔐 LOGIN MODERNE -->
+<section class="login-wrapper">
+
+    <div class="login-card">
+
+        <h2>🔐 Connexion</h2>
+        <p>Accédez à votre espace boutique</p>
+
+        <!-- 📧 EMAIL -->
+        <input type="email" id="email" placeholder="Adresse email">
+
+        <!-- 🔑 PASSWORD -->
+        <input type="password" id="password" placeholder="Mot de passe">
+
+        <!-- 🔘 BOUTONS -->
+        <button onclick="login()">Se connecter</button>
+        <button onclick="signup()">S’inscrire</button>
+
+        <!-- 🔥 MESSAGE -->
+        <p id="message"></p>
+
+        <!-- 🚪 LOGOUT (optionnel) -->
+        <button onclick="logout()" class="logout-btn">Se déconnecter</button>
+
+    </div>
+
+</section>
+
+<script type="module" src="login.js"></script>
+
+</body>
+</html>
