@@ -5,12 +5,12 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/12.12.0/firebas
 
 // Configuration Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyCmTuhGASI47tCTM8K0kH4rSqq2UYFGirk",
-    authDomain: "commerce-pro-a4164.firebaseapp.com",
-    projectId: "commerce-pro-a4164",
-    storageBucket: "commerce-pro-a4164.firebasestorage.app",
-    messagingSenderId: "831984379293",
-    appId: "1:831984379293:web:f4345faa088aa45d32bb74"
+    apiKey: "AIzaSyDqDDbKqBpAPkcdqWLwx7lzmI-epk7TFvk",
+    authDomain: "boutique-fashion-4.firebaseapp.com",
+    projectId: "boutique-fashion-4",
+    storageBucket: "boutique-fashion-4.firebasestorage.app",
+    messagingSenderId: "97186557316",
+    appId: "1:97186557316:web:2a24215be7ba31a31041d1"
 };
 
 // Initialiser Firebase
