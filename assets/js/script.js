@@ -20,6 +20,8 @@ let allProducts = [];
 
 // 🔥 CHARGEMENT PRODUITS
 async function loadProducts() {
+    console.log("db =", db);
+    console.log(typeof db);
     const querySnapshot = await getDocs(collection(db, "products"));
 
     allProducts = [];
