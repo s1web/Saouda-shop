@@ -138,7 +138,7 @@
 <!-- 🔥 MODIF : script en module pour Firebase -->
 <script type="module">
 
-import { db } from './firebase-config.js';
+import { db, auth } from './firebase-config.js';
 import { collection, addDoc } 
 from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
@@ -193,11 +193,14 @@ form.addEventListener("submit", async (e) => {
         // ==========================
         // 🔥 FIREBASE (AJOUT COMMANDE)
         // ==========================
+        const user = auth.currentUser;
+        const userEmail = user ? user.email : "";
         await addDoc(collection(db, "orders"), {
             nom,
             prenom,
             telephone,
             email,
+            userEmail,
             cart,
             total,
             status: "En attente", // 🔥 AJOUT STATUT
