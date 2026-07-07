@@ -938,3 +938,253 @@ text-align:center;
 }
 
 }
+
+
+/* ===================================================== */
+/* 📱 AJOUT : VERSION MOBILE OPTIMISÉE */
+/* ===================================================== */
+
+@media screen and (max-width: 992px){
+
+/* ---------- HEADER ---------- */
+
+header{
+
+flex-direction:column;
+
+padding:20px;
+
+gap:15px;
+
+}
+
+header nav ul{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:12px;
+
+}
+
+
+/* ---------- BANNIÈRE ---------- */
+
+.banner{
+
+padding:50px 20px;
+
+}
+
+.banner h1{
+
+font-size:32px;
+
+}
+
+.banner p{
+
+font-size:18px;
+
+}
+
+
+/* ---------- RECHERCHE ---------- */
+
+.search-section input{
+
+width:95%;
+
+}
+
+
+/* ---------- FILTRES ---------- */
+
+.filters{
+
+flex-wrap:wrap;
+
+padding:15px;
+
+}
+
+
+/* ---------- PRODUITS ---------- */
+
+.products{
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+padding:20px;
+
+}
+
+
+/* ---------- DÉTAIL PRODUIT ---------- */
+
+.product-detail{
+
+flex-direction:column;
+
+align-items:center;
+
+padding:25px;
+
+}
+
+.product-detail img{
+
+width:100%;
+
+max-width:350px;
+
+}
+
+
+/* ---------- PANIER ---------- */
+
+.cart-item{
+
+flex-direction:column;
+
+text-align:center;
+
+gap:15px;
+
+}
+
+.cart-item img{
+
+width:120px;
+
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.footer-container{
+
+grid-template-columns:1fr 1fr;
+
+gap:30px;
+
+}
+
+}
+
+
+
+/* ===================================================== */
+/* 📱 PETITS SMARTPHONES */
+/* ===================================================== */
+
+@media screen and (max-width:600px){
+
+.logo{
+
+font-size:22px;
+
+}
+
+
+/* ---------- HEADER ---------- */
+
+header nav ul{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+
+/* ---------- BANNIÈRE ---------- */
+
+.banner h1{
+
+font-size:28px;
+
+}
+
+.banner p{
+
+font-size:16px;
+
+}
+
+
+/* ---------- PRODUITS ---------- */
+
+.products{
+
+grid-template-columns:1fr;
+
+padding:15px;
+
+}
+
+
+/* ---------- CARTE PRODUIT ---------- */
+
+.product-card{
+
+width:100%;
+
+}
+
+
+/* ---------- BOUTONS ---------- */
+
+.product-card button,
+
+.btn-order,
+
+.filters button{
+
+width:100%;
+
+}
+
+
+/* ---------- FORMULAIRE COMMANDE ---------- */
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.form-box{
+
+width:100%;
+
+}
+
+
+/* ---------- ESPACE CLIENT ---------- */
+
+.orders-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.footer-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.footer-box{
+
+align-items:center;
+
+}
+
+}
