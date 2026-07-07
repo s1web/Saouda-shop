@@ -681,3 +681,260 @@ textarea {
     font-size: 24px;
     font-weight: bold;
 }
+
+/* ===================================================== */
+/* AJOUT : ESPACE CLIENT */
+/* ===================================================== */
+
+/* ---------- En-tête ---------- */
+.client-header{
+    text-align:center;
+    padding:50px 20px;
+    background:linear-gradient(135deg,#ff7e5f,#feb47b);
+    color:white;
+}
+
+.client-header h1{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.client-header p{
+    font-size:18px;
+    opacity:.9;
+}
+
+
+/* ---------- Conteneur ---------- */
+.client-orders{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:40px 20px;
+
+}
+
+
+/* ---------- Grille ---------- */
+
+.orders-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:25px;
+
+}
+
+
+/* ---------- Carte commande ---------- */
+
+.client-order-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.client-order-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+
+/* ---------- Haut carte ---------- */
+
+.order-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.order-top h3{
+
+    color:#ff7e5f;
+
+}
+
+
+/* ---------- Produits ---------- */
+
+.client-products{
+
+    margin-top:20px;
+
+}
+
+
+.client-product{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+    padding:12px;
+
+    border:1px solid #eee;
+
+    border-radius:10px;
+
+    margin-bottom:12px;
+
+}
+
+
+.client-product img{
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+}
+
+
+.client-product h4{
+
+    margin-bottom:6px;
+
+}
+
+
+.client-product p{
+
+    color:#666;
+
+}
+
+
+/* ---------- Badges ---------- */
+
+.status-wait{
+
+    background:#fff3cd;
+
+    color:#856404;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+}
+
+
+.status-progress{
+
+    background:#d1ecf1;
+
+    color:#0c5460;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+}
+
+
+.status-done{
+
+    background:#d4edda;
+
+    color:#155724;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+}
+
+
+/* ---------- Aucune commande ---------- */
+
+.empty-orders{
+
+    background:white;
+
+    padding:60px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+.empty-orders h2{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+}
+
+
+.empty-orders p{
+
+    font-size:20px;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:768px){
+
+.client-header h1{
+
+font-size:30px;
+
+}
+
+.orders-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.client-product{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
