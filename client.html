@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mon compte - Boutique Fashion</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<!-- ===================================== -->
+<!-- HEADER -->
+<!-- ===================================== -->
+
+<header>
+
+    <div class="logo">
+        Boutique Fashion
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Accueil</a></li>
+
+            <li><a href="cart.html">Panier</a></li>
+
+            <li><a href="#" id="logoutBtn">Déconnexion</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ===================================== -->
+<!-- TITRE -->
+<!-- ===================================== -->
+
+<section class="client-header">
+
+    <h1>
+
+        👤 Mon compte
+
+    </h1>
+
+    <p>
+
+        Retrouvez toutes vos commandes.
+
+    </p>
+
+</section>
+
+
+<!-- ===================================== -->
+<!-- COMMANDES -->
+<!-- ===================================== -->
+
+<section class="client-orders">
+
+    <div id="ordersContainer" class="orders-grid">
+
+        <p>Chargement des commandes...</p>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================== -->
+<!-- FOOTER -->
+<!-- ===================================== -->
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-box">
+
+<h3>Boutique Fashion</h3>
+
+<p>
+
+Votre boutique en ligne de vêtements, chaussures et accessoires tendance.
+
+</p>
+
+</div>
+
+
+<div class="footer-box">
+
+<h3>Liens rapides</h3>
+
+<a href="index.html">Accueil</a>
+
+<a href="cart.html">Panier</a>
+
+<a href="client.html">Mon compte</a>
+
+</div>
+
+
+<div class="footer-box">
+
+<h3>Support</h3>
+
+<p>Email : mikdarsaouda@gmail.com</p>
+
+<p>Tél : +2694456911</p>
+
+</div>
+
+
+<div class="footer-box">
+
+<h3>Suivez-nous</h3>
+
+<div class="socials">
+
+<a href="#">Facebook</a>
+
+<a href="#">Instagram</a>
+
+<a href="#">TikTok</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 Boutique Fashion - Tous droits réservés
+
+</div>
+
+</footer>
+
+
+
+<!-- ===================================== -->
+<!-- FIREBASE -->
+<!-- ===================================== -->
+
+<script type="module">
+
+// =====================================
+// AJOUT : Firebase
+// =====================================
+
+import { db, auth } from "./firebase-config.js";
+
+import {
+
+collection,
+
+query,
+
+where,
+
+getDocs,
+
+orderBy
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+import {
+
+onAuthStateChanged,
+
+signOut
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+
+
+// =====================================
+// Déconnexion
+// =====================================
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+
+    await signOut(auth);
+
+    window.location.href = "auth/login.html";
+
+});
+
+
+// =====================================
+// Vérifier connexion
+// =====================================
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+
+        window.location.href = "auth/login.html";
+
+        return;
+
+    }
+
+    loadOrders(user.email);
+
+});
+
+
+// =====================================
+// Charger commandes
+// =====================================
+
+async function loadOrders(email) {
+
+const container = document.getElementById("ordersContainer");
+
+container.innerHTML = "";
+
+
+// =====================================
+// AJOUT : récupérer commandes du client
+// =====================================
+
+const q = query(
+
+collection(db, "orders"),
+
+where("userEmail", "==", email),
+
+orderBy("date", "desc")
+
+);
+
+const snapshot = await getDocs(q);
+
+
+// =====================================
+// Aucune commande
+// =====================================
+
+if(snapshot.empty){
+
+container.innerHTML=`
+
+<div class="empty-orders">
+
+<h2>
+
+📦
+
+</h2>
+
+<p>
+
+Vous n'avez encore passé aucune commande.
+
+</p>
+
+<a href="index.html" class="btn-order">
+
+Découvrir nos produits
+
+</a>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+// =====================================
+// Affichage
+// =====================================
+
+snapshot.forEach(doc=>{
+
+const order=doc.data();
+
+let products="";
+
+order.cart.forEach(item=>{
+
+products+=`
+
+<div class="client-product">
+
+<img src="${item.img}">
+
+<div>
+
+<h4>${item.name}</h4>
+
+<p>
+
+${item.quantity || 1} × ${item.price} €
+
+</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+let badge="status-wait";
+
+if(order.status==="En cours"){
+
+badge="status-progress";
+
+}
+
+if(order.status==="Livrée"){
+
+badge="status-done";
+
+}
+
+
+container.innerHTML+=`
+
+<div class="client-order-card">
+
+<div class="order-top">
+
+<h3>
+
+Commande
+
+</h3>
+
+<span class="${badge}">
+
+${order.status}
+
+</span>
+
+</div>
+
+<p>
+
+<b>Date :</b>
+
+${new Date(order.date).toLocaleString("fr-FR")}
+
+</p>
+
+<p>
+
+<b>Total :</b>
+
+${order.total} €
+
+</p>
+
+<div class="client-products">
+
+${products}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
