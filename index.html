@@ -19,7 +19,7 @@
         <ul>
             <li><a href="index.html">Accueil</a></li>
             <li><a href="cart.html">🛒 Panier (<span id="cart-count">0</span>)</a></li>
-            <li><a href="auth/login.html">👤 Connexion</a></li>
+            <li id="accountMenu"><a href="auth/login.html">👤 Connexion</a></li>
         </ul>
     </nav>
 </header>
@@ -117,6 +117,49 @@
 <!-- 🔹 JS -->
 <script src="assets/js/whatsapp.js"></script>
 <script type="module" src="assets/js/script.js"></script>
+<script type="module">
 
+import { auth } from "./firebase-config.js";
+
+import { onAuthStateChanged }
+
+from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+
+
+const accountMenu = document.getElementById("accountMenu");
+
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(user){
+
+        accountMenu.innerHTML=`
+
+        <a href="client.html">
+
+            👤 Mon compte
+
+        </a>
+
+        `;
+
+    }
+
+    else{
+
+        accountMenu.innerHTML=`
+
+        <a href="auth/login.html">
+
+            👤 Connexion
+
+        </a>
+
+        `;
+
+    }
+
+});
+    
 </body>
 </html>
