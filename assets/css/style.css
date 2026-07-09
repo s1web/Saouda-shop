@@ -1527,72 +1527,63 @@ align-items:center;
 
     }
 
-    /* ========================================================= */
-/* 🔥 CATÉGORIES MOBILE */
+     /* ========================================================= */
+    /* 🔥 CATÉGORIES */
 /* ========================================================= */
 
-.mobile-categories{
+    .mobile-categories{
 
-    display:flex;
+        display:flex;
+        
+        flex-wrap:nowrap;
 
-    flex-wrap:nowrap;          
+        overflow-x:auto;
 
-    overflow-x:auto;           
+        gap:10px;
 
-    overflow-y:hidden;
+        padding:10px;
 
-    gap:12px;
+        background:#ffffff;
 
-    padding:12px;
+        scrollbar-width:none;
 
-    background:#ffffff;
+    }
 
-    scrollbar-width:none;
+    .mobile-categories::-webkit-scrollbar{
 
-    -webkit-overflow-scrolling:touch;
+        display:none;
 
-}
+    }
 
-.mobile-categories::-webkit-scrollbar{
+    .mobile-categories button{
 
-    display:none;
+        flex-shrink:0;
 
-}
+        border:none;
 
+        border-radius:20px;
 
-/* ========================================================= */
+        background:#fff3e6;
 
-.mobile-categories button{
+        color:#f68b1e;
 
-    flex:0 0 auto;             /* 🔥 Très important */
+        padding:8px 16px;
 
-    white-space:nowrap;        /* 🔥 Le texte reste sur une ligne */
+        font-weight:600;
 
-    border:none;
+        cursor:pointer;
 
-    background:#fff3e6;
+        transition:.25s;
 
-    color:#f68b1e;
+    }
 
-    border-radius:30px;
+    .mobile-categories button:hover{
 
-    padding:10px 18px;
+        background:#f68b1e;
 
-    font-size:14px;
+        color:#fff;
 
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.mobile-categories button:hover{
-
-    background:#f68b1e;
-
-    color:white;
+    }
 
 }
 
