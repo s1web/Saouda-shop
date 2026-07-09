@@ -12,17 +12,190 @@
 <body>
 
 <!-- 🔹 HEADER -->
-<header>
-    <div class="logo">Boutique Fashion</div>
+<header class="jumia-header">
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="cart.html">🛒 Panier (<span id="cart-count">0</span>)</a></li>
-            <li id="accountMenu"><a href="auth/login.html">👤 Connexion</a></li>
-        </ul>
-    </nav>
+    <!-- ========================= -->
+    <!-- 💻 HEADER PC -->
+    <!-- ========================= -->
+    <div class="header-desktop">
+
+        <!-- Logo -->
+        <a href="index.html" class="logo">
+            Boutique Fashion
+        </a>
+
+        <!-- Barre recherche -->
+        <div class="desktop-search">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Cherchez un produit, une marque ou une catégorie"
+            >
+
+            <button onclick="advancedSearch()">
+                Rechercher
+            </button>
+
+        </div>
+
+        <!-- Menu -->
+        <div class="desktop-menu">
+
+            <!-- 👤 Connexion -->
+            <div class="menu-item">
+
+                <a id="accountMenu" href="auth/login.html">
+
+                    👤 <span>Se connecter</span>
+
+                </a>
+
+            </div>
+
+            <!-- ❓ Aide -->
+            <div class="menu-item">
+
+                <a href="#">
+
+                    ❓ <span>Aide</span>
+
+                </a>
+
+            </div>
+
+            <!-- 🛒 Panier -->
+            <div class="menu-item">
+
+                <a href="cart.html">
+
+                    🛒 <span>Panier</span>
+
+                    <strong id="cart-count">0</strong>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ====================================================== -->
+<!-- 🔥 NOUVEAU HEADER MOBILE STYLE E-COMMERCE -->
+<!-- ====================================================== -->
+
+<div class="header-mobile">
+
+    <!-- ☰ MENU -->
+    <button id="menu-btn" class="mobile-icon">
+        ☰
+    </button>
+
+    <!-- 🛍 LOGO -->
+    <a href="index.html" class="mobile-logo">
+        Boutique Fashion
+    </a>
+
+    <!-- 🔍 RECHERCHE -->
+    <div class="mobile-search-box">
+
+        <input
+            type="text"
+            id="mobile-search"
+            placeholder="Rechercher..."
+        >
+
+    </div>
+
+    <!-- 👤 COMPTE -->
+    <a href="auth/login.html"
+       id="accountMenuMobile"
+       class="mobile-icon">
+
+        👤
+
+    </a>
+
+    <!-- 🛒 PANIER -->
+    <a href="cart.html"
+       class="mobile-icon mobile-cart">
+
+        🛒
+
+        <span id="cart-count-mobile">
+            0
+        </span>
+
+    </a>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- 🔥 CATÉGORIES MOBILE -->
+<!-- ====================================================== -->
+
+<div class="mobile-categories">
+
+    <button>Téléphones</button>
+
+    <button>Mode</button>
+
+    <button>Chaussures</button>
+
+    <button>Beauté</button>
+
+    <button>Informatique</button>
+
+    <button>Accessoires</button>
+
+</div>
+
 </header>
+
+
+<!-- ====================================================== -->
+<!-- 🔥 MENU LATÉRAL MOBILE -->
+<!-- ====================================================== -->
+
+<div id="mobile-menu" class="mobile-menu">
+
+    <a href="index.html">🏠 Accueil</a>
+
+    <a id="accountMenuMobile" href="auth/login.html">
+
+        👤 Mon compte
+
+    </a>
+
+    <a href="cart.html">
+
+        🛒 Mon panier
+
+    </a>
+
+    <a href="client.html">
+
+        📦 Mes commandes
+
+    </a>
+
+    <a href="#">
+
+        📞 Support
+
+    </a>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- 🔥 FOND NOIR -->
+<!-- ====================================================== -->
+
+<div id="overlay" class="overlay"></div>
 
 <!-- 🔹 BANNIÈRE -->
 <section class="banner">
