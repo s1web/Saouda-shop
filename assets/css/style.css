@@ -1192,3 +1192,599 @@ align-items:center;
 }
 
 }
+
+
+/* ========================================================= */
+/* 🔥 HEADER PRO max nouveau style  */
+/* ========================================================= */
+
+.jumia-header{
+
+    position:sticky;
+    top:0;
+    z-index:9999;
+
+    background:#ffffff;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+
+/* =============================== */
+/* 💻 HEADER DESKTOP */
+/* =============================== */
+
+.header-desktop{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    padding:18px 30px;
+
+}
+
+
+/* LOGO */
+
+.header-desktop .logo{
+
+    text-decoration:none;
+
+    color:#222;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+
+}
+
+
+/* =============================== */
+/* RECHERCHE */
+/* =============================== */
+
+.desktop-search{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.desktop-search input{
+
+    width:100%;
+
+    height:52px;
+
+    border-radius:8px;
+
+    border:1px solid #cfcfcf;
+
+    padding:0 20px;
+
+    font-size:17px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+
+.desktop-search input:focus{
+
+    border-color:#f68b1e;
+
+    box-shadow:0 0 8px rgba(246,139,30,.25);
+
+}
+
+
+.desktop-search button{
+
+    height:52px;
+
+    padding:0 28px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#f68b1e;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.desktop-search button:hover{
+
+    background:#ff9f3d;
+
+}
+
+
+/* =============================== */
+/* MENU */
+/* =============================== */
+
+.desktop-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+
+.menu-item a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    text-decoration:none;
+
+    color:#222;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+
+.menu-item a:hover{
+
+    color:#f68b1e;
+
+}
+
+
+.menu-item strong{
+
+    background:#f68b1e;
+
+    color:white;
+
+    padding:3px 8px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+}
+
+
+/* ========================================================= */
+/* 🔥 NOUVEAU HEADER MOBILE PREMIUM */
+/* ========================================================= */
+
+@media (max-width:900px){
+
+    /* On cache le header PC */
+    .header-desktop{
+        display:none;
+    }
+
+    /* Header principal */
+    .header-mobile{
+
+        display:flex;
+        align-items:center;
+        gap:12px;
+
+        padding:12px 14px;
+
+        background:linear-gradient(90deg,#f68b1e,#ff9d2f);
+
+        box-shadow:0 3px 12px rgba(0,0,0,.18);
+
+    }
+
+    /* Boutons menu, compte, panier */
+    .mobile-icon{
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        width:42px;
+        height:42px;
+
+        border:none;
+        background:none;
+
+        color:#fff;
+        font-size:24px;
+
+        text-decoration:none;
+
+        cursor:pointer;
+
+        flex-shrink:0;
+
+    }
+
+    /* Logo */
+    .mobile-logo{
+
+        color:#fff;
+
+        font-size:18px;
+
+        font-weight:700;
+
+        text-decoration:none;
+
+        white-space:nowrap;
+
+        margin-right:8px;
+
+    }
+
+    /* Recherche */
+    .mobile-search-box{
+
+        flex:1;
+
+        display:flex;
+
+    }
+
+    .mobile-search-box input{
+
+        width:100%;
+
+        height:40px;
+
+        border:none;
+
+        outline:none;
+
+        border-radius:25px;
+
+        padding:0 15px;
+
+        font-size:14px;
+
+        background:#fff;
+
+    }
+
+    .mobile-search-box input::placeholder{
+
+        color:#888;
+
+    }
+
+    /* Badge panier */
+    .mobile-cart{
+
+        position:relative;
+
+    }
+
+    #cart-count-mobile{
+
+        position:absolute;
+
+        top:-5px;
+
+        right:-5px;
+
+        min-width:18px;
+
+        height:18px;
+
+        background:#ff2d2d;
+
+        color:#fff;
+
+        font-size:11px;
+
+        font-weight:bold;
+
+        border-radius:50%;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+    }
+
+    /* ========================================================= */
+    /* 🔥 CATÉGORIES */
+/* ========================================================= */
+
+    .mobile-categories{
+
+        display:flex;
+
+        overflow-x:auto;
+
+        gap:10px;
+
+        padding:10px;
+
+        background:#ffffff;
+
+        scrollbar-width:none;
+
+    }
+
+    .mobile-categories::-webkit-scrollbar{
+
+        display:none;
+
+    }
+
+    .mobile-categories button{
+
+        flex-shrink:0;
+
+        border:none;
+
+        border-radius:20px;
+
+        background:#fff3e6;
+
+        color:#f68b1e;
+
+        padding:8px 16px;
+
+        font-weight:600;
+
+        cursor:pointer;
+
+        transition:.25s;
+
+    }
+
+    .mobile-categories button:hover{
+
+        background:#f68b1e;
+
+        color:#fff;
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* 🔥 VERSION PC */
+/* ========================================================= */
+
+@media (min-width:901px){
+
+    .header-mobile{
+
+        display:none;
+
+    }
+
+    .mobile-categories{
+
+        display:none;
+
+    }
+
+}
+
+/* ========================================================= */
+/* MENU LATÉRAL */
+/* ========================================================= */
+
+.mobile-menu{
+
+    position:fixed;
+
+    left:-300px;
+
+    top:0;
+
+    width:280px;
+
+    height:100%;
+
+    background:white;
+
+    z-index:10000;
+
+    transition:.30s;
+
+    box-shadow:5px 0 20px rgba(0,0,0,.25);
+
+    overflow:auto;
+
+    padding-top:25px;
+
+}
+
+
+.mobile-menu.open{
+
+    left:0;
+
+}
+
+
+.mobile-menu a{
+
+    display:block;
+
+    padding:18px 25px;
+
+    text-decoration:none;
+
+    color:#222;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    border-bottom:1px solid #eee;
+
+}
+
+
+.mobile-menu a:hover{
+
+    background:#fafafa;
+
+    color:#f68b1e;
+
+}
+
+
+/* ========================================================= */
+/* OVERLAY */
+/* ========================================================= */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s;
+
+    z-index:9998;
+
+}
+
+
+.overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+/* ========================================================= */
+/* FILTRES */
+/* ========================================================= */
+
+.filters{
+
+    display:flex;
+
+    overflow-x:auto;
+
+    gap:10px;
+
+    padding:15px;
+
+    scrollbar-width:none;
+
+}
+
+
+.filters::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* ========================================================= */
+/* 📱 VERSION MOBILE */
+/* ========================================================= */
+
+@media(max-width:900px){
+
+.header-desktop{
+
+display:none;
+
+}
+
+.header-mobile{
+
+display:flex;
+
+}
+
+.mobile-search{
+
+display:block;
+
+}
+
+}
+
+
+/* ========================================================= */
+/* 💻 VERSION PC */
+/* ========================================================= */
+
+@media(min-width:901px){
+
+.header-mobile{
+
+display:none;
+
+}
+
+.mobile-search{
+
+display:none;
+
+}
+
+.mobile-menu{
+
+display:none;
+
+}
+
+.overlay{
+
+display:none;
+
+}
+
+}
