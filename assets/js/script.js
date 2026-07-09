@@ -84,7 +84,7 @@ function goToProduct(id) {
     window.location.href = `product.html?id=${id}`;
 }
 
-// 🔥 🔍 RECHERCHE AVANCÉE (NOUVEAU)
+// 🔥 🔍 RECHERCHE AVANCÉE 
 function advancedSearch() {
 
     const searchValue = searchInput.value.toLowerCase();
@@ -160,3 +160,53 @@ loadProducts();
 
 // 🔥 GLOBAL
 window.advancedSearch = advancedSearch;
+
+// ======================================================
+// 🔥 AJOUT : MENU MOBILE STYLE s1web
+// ======================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // 🔥 Récupération des éléments
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const overlay = document.getElementById("overlay");
+
+    // Si on n'est pas sur une page avec ce header, on ne fait rien
+    if (!menuBtn || !mobileMenu || !overlay) return;
+
+    // ======================================================
+    // 🔥 Ouvrir le menu
+    // ======================================================
+    menuBtn.addEventListener("click", () => {
+
+        mobileMenu.classList.add("open");
+        overlay.classList.add("show");
+
+    });
+
+    // ======================================================
+    // 🔥 Fermer le menu
+    // ======================================================
+    function closeMenu() {
+
+        mobileMenu.classList.remove("open");
+        overlay.classList.remove("show");
+
+    }
+
+    // Cliquer sur le fond noir
+    overlay.addEventListener("click", closeMenu);
+
+    // Touche Échap
+    document.addEventListener("keydown", (e) => {
+
+        if (e.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    });
+
+});
