@@ -1528,63 +1528,73 @@ align-items:center;
     }
 
     /* ========================================================= */
-    /* 🔥 CATÉGORIES */
+/* 🔥 CATÉGORIES MOBILE */
 /* ========================================================= */
 
-    .mobile-categories{
+.mobile-categories{
 
-        display:flex;
+    display:flex;
 
-        overflow-x:auto;
+    flex-wrap:nowrap;          
 
-        gap:10px;
+    overflow-x:auto;           
 
-        padding:10px;
+    overflow-y:hidden;
 
-        background:#ffffff;
+    gap:12px;
 
-        scrollbar-width:none;
+    padding:12px;
 
-    }
+    background:#ffffff;
 
-    .mobile-categories::-webkit-scrollbar{
+    scrollbar-width:none;
 
-        display:none;
-
-    }
-
-    .mobile-categories button{
-
-        flex-shrink:0;
-
-        border:none;
-
-        border-radius:20px;
-
-        background:#fff3e6;
-
-        color:#f68b1e;
-
-        padding:8px 16px;
-
-        font-weight:600;
-
-        cursor:pointer;
-
-        transition:.25s;
-
-    }
-
-    .mobile-categories button:hover{
-
-        background:#f68b1e;
-
-        color:#fff;
-
-    }
+    -webkit-overflow-scrolling:touch;
 
 }
 
+.mobile-categories::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* ========================================================= */
+
+.mobile-categories button{
+
+    flex:0 0 auto;             /* 🔥 Très important */
+
+    white-space:nowrap;        /* 🔥 Le texte reste sur une ligne */
+
+    border:none;
+
+    background:#fff3e6;
+
+    color:#f68b1e;
+
+    border-radius:30px;
+
+    padding:10px 18px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.mobile-categories button:hover{
+
+    background:#f68b1e;
+
+    color:white;
+
+}
 
 /* ========================================================= */
 /* 🔥 VERSION PC */
