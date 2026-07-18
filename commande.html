@@ -149,19 +149,40 @@ from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let total = 0;
+
 let text = "📦 Nouvelle commande\n\n";
 
-cart.forEach(item => {
+cart.forEach(item=>{
 
-    // 🔥 MODIF : sécurité quantity
-    let qty = item.quantity || 1;
+    const qty = item.quantity || 1;
 
     total += item.price * qty;
 
-    text += `${item.name} x${qty} - ${item.price} €\n`;
+    text += `
+
+🛍 Produit : ${item.name}
+
+📂 Catégorie : ${item.category || "-"}
+
+${item.variant ? "📏 Taille : " + item.variant : ""}
+
+${item.color ? "🎨 Couleur : " + item.color : ""}
+
+💰 Prix : ${item.price} €
+
+🔢 Quantité : ${qty}
+
+────────────────────
+
+`;
+
 });
 
-text += `\n💰 Total: ${total} €`;
+text += `
+
+💵 TOTAL : ${total} €
+
+`;
 
 document.getElementById("cartData").value = text;
 
@@ -191,7 +212,7 @@ form.addEventListener("submit", async (e) => {
     try {
 
         // ==========================
-        // 🔥 FIREBASE (AJOUT COMMANDE)
+        // 🔥 FIREBASE (AJOUT COMMANDE) + 🔥 AJOUT : utilisateur connecté
         // ==========================
         const user = auth.currentUser;
         const userEmail = user ? user.email : "";
@@ -199,8 +220,10 @@ form.addEventListener("submit", async (e) => {
             nom,
             prenom,
             telephone,
+            // Email saisi dans le formulaire
             email,
-            userEmail: auth.currentUser.email,
+            // Email du compte connecté
+            userEmail,
             cart,
             total,
             status: "En attente", // 🔥 AJOUT STATUT
@@ -236,7 +259,7 @@ form.addEventListener("submit", async (e) => {
         const phone = "+2694456911"; // 🔥 MET TON NUMÉRO
 
         const message = `
-        📦 Nouvelle commande
+        📦 Nouvelle commande Boutique Fashion
 
         👤 ${nom} ${prenom}
         📞 ${telephone}
