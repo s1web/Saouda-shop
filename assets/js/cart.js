@@ -29,19 +29,94 @@ function displayCart(){
 
         div.innerHTML=`
             <img src="${item.img}">
-            <div>
-                <h4>${item.name}</h4>
-                <p>${item.category || ""}</p>
-                <div>${item.price} € x ${item.quantity}</div>
+            <div class="cart-info">
 
-                <!-- 🔥 BOUTONS QUANTITÉ -->
-                <button onclick="increaseQty(${index})">+</button>
-                <button onclick="decreaseQty(${index})">-</button>
+                <h4>${item.name}</h4>
+
+                <p class="cart-category">
+
+                    ${item.category || ""}
+
+                </p>
+
+                ${
+                    item.variant
+                    ?
+
+                    `<p class="cart-variant">
+
+                        Taille :
+                        <strong>${item.variant}</strong>
+
+                    </p>`
+
+                    :
+
+                    ""
+                }
+
+                ${
+                    item.color
+                    ?
+
+                    `<div class="cart-color">
+
+                        Couleur :
+
+                        <span
+                        class="cart-color-dot"
+                        style="background:${item.colorCode || '#000'}">
+                        </span>
+
+                        <strong>${item.color}</strong>
+
+                    </div>`
+
+                   :
+
+                   ""
+                }
+
+                <div class="cart-unit-price">
+
+                    ${item.price} € × ${item.quantity}
+
+                </div>
+
+                <div class="cart-actions">
+
+                    <button onclick="decreaseQty(${index})">
+
+                        −
+
+                    </button>
+
+                    <button onclick="increaseQty(${index})">
+
+                        +
+
+                    </button>
+
+                </div>
+
             </div>
 
-            <div>
-                <div class="price">${itemTotal} €</div>
-                <button onclick="removeFromCart(${index})">Supprimer</button>
+            <div class="cart-right">
+
+                <div class="price">
+
+                    ${itemTotal.toFixed(2)} €
+
+                </div>
+
+                <button
+                class="remove-btn"
+                onclick="removeFromCart(${index})">
+
+                    🗑 Supprimer
+
+                </button>
+
             </div>
         `;
 
