@@ -70,15 +70,100 @@ onSnapshot(q, (snapshot) => {
 
         o.cart.forEach(item => {
             let qty = item.quantity || 1;
+            const productTotal = (item.price || 0) * qty;
 
             productsHTML += `
-                <div class="order-product">
-                    <img src="${item.img}" width="50">
-                    <div>
-                        <p><b>${item.name}</b></p>
-                        <p>${qty} x ${item.price} €</p>
-                    </div>
+
+            <div class="order-product">
+
+                <img
+                src="${item.img}"
+                class="order-product-image">
+
+                <div class="order-product-info">
+
+                    <h4>
+
+                    ${item.name}
+
+                    </h4>
+
+                    <p>
+
+                    📂 ${item.category || "-"}
+
+                    </p>
+
+                    ${
+                        item.variant
+                        ?
+
+                        `<p>
+
+                        📏 Taille :
+
+                        <b>${item.variant}</b>
+
+                        </p>`
+
+                        :
+
+                        ""
+                    }
+
+                    ${
+                        item.color
+                        ?
+
+                        `<p class="order-color">
+
+                        🎨 Couleur :
+
+                        <span
+                        class="order-color-dot"
+                        style="background:${item.colorCode || "#000"}">
+
+                        </span>
+
+                        ${item.color}
+
+                        </p>`
+
+                        :
+
+                        ""
+                    }
+
+                    <p>
+
+                    🔢 Quantité :
+
+                    <b>${qty}</b>
+
+                    </p>
+
+                    <p>
+
+                    💰 ${item.price} €
+
+                    </p>
+
+                    <p>
+
+                    💵 Total :
+
+                    <b>
+
+                    ${productTotal.toFixed(2)} €
+
+                    </b>
+
+                    </p>
+
                 </div>
+
+            </div>
+
             `;
         });
 
@@ -157,6 +242,7 @@ window.updateStatus = updateStatus;
 window.deleteOrder = deleteOrder;
 
 </script>
+<!-- 🔐 AJOUT : Protection de la page admin -->
 <script type="module" src="admin-auth.js"></script>
 
 </body>
