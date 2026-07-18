@@ -585,7 +585,7 @@ function addColor(){
 
     colorName.value="";
 
-    colorPicker.value="#000000";
+    colorPicker.value = "";
 
     renderColors();
 
@@ -648,7 +648,7 @@ function resetForm(){
     renderColors();
 
     colorName.value = "";
-    colorPicker.value = "#000000";
+    colorPicker.value = "";
 }
 
 // 🔥 GLOBAL
