@@ -1,4 +1,4 @@
-import { db } from '/firebase-config.js';
+import { db } from './firebase-config.js';
 import { doc, getDoc,collection, addDoc, getDocs, query, orderBy } 
 from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
