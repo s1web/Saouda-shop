@@ -5,6 +5,7 @@ import { db } from './firebase-config.js';
 import { collection, getDocs } 
 from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
+import { buildHomePage } from "./home.js";
 // 🔥 VARIABLES
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -20,8 +21,6 @@ let allProducts = [];
 
 // 🔥 CHARGEMENT PRODUITS
 async function loadProducts() {
-    console.log("db =", db);
-    console.log(typeof db);
     const querySnapshot = await getDocs(collection(db, "products"));
 
     allProducts = [];
@@ -30,61 +29,31 @@ async function loadProducts() {
         const data = docItem.data();
 
         allProducts.push({
+
             id: docItem.id,
-            name: data.name,
-            category: data.category,
-            price: data.price,
-            img: data.img,
-            description: data.description || "Pas de description"
-        });
+
+            ...data,
+
+            images:data.images || [data.img],
+
+            oldPrice:data.oldPrice || null,
+
+            promo:data.promo || 0,
+
+            badge:data.badge || "",
+
+            stock:data.stock || 0,
+
+            featured:data.featured || false
+
+         });
     });
 
-    displayProducts(allProducts);
+    buildHomePage(allProducts);
     generateCategories();
 }
 
-// 🔥 AFFICHAGE
-function displayProducts(products) {
-    productsContainer.innerHTML = "";
-
-    if (products.length === 0) {
-        productsContainer.innerHTML = "<p>Aucun produit trouvé 😢</p>";
-        return;
-    }
-
-    products.forEach(product => {
-        const card = document.createElement("div");
-        card.classList.add("product-card");
-
-        card.innerHTML = `
-            <img src="${product.img}" class="product-img">
-            <h3>${product.name}</h3>
-            <p>${product.category}</p>
-            <div class="price">${product.price} €</div>
-            <button class="add-btn">Ajouter au panier</button>
-        `;
-
-        // 🔥 EVENTS (plus propre)
-        card.querySelector(".product-img")
-            .addEventListener("click", () => goToProduct(product.id));
-
-        card.querySelector(".add-btn")
-            .addEventListener("click", () =>
-                addToCart(product.id, product.name, product.price, product.img, product.category)
-            );
-
-        productsContainer.appendChild(card);
-    });
-
-    updateCartCount();
-}
-
-// 🔥 NAVIGATION
-function goToProduct(id) {
-    window.location.href = `product.html?id=${id}`;
-}
-
-// 🔥 🔍 RECHERCHE AVANCÉE 
+// 🔥 🔍 RECHERCHE AVANCÉE (NOUVEAU)
 function advancedSearch() {
 
     const searchValue = searchInput.value.toLowerCase();
@@ -101,7 +70,7 @@ function advancedSearch() {
         return matchText && matchPrice;
     });
 
-    displayProducts(filtered);
+    buildHomePage(filtered);
 }
 
 // 🔥 CATÉGORIES
@@ -128,8 +97,23 @@ function generateCategories() {
 
 // 🔥 FILTRE CATÉGORIE
 function filterProducts(category) {
-    if (category === "all") displayProducts(allProducts);
-    else displayProducts(allProducts.filter(p => p.category === category));
+    if(category==="all"){
+
+        buildHomePage(allProducts);
+
+    }else{
+
+        buildHomePage(
+
+            allProducts.filter(
+
+                p=>p.category===category
+
+            )
+
+        );
+
+    }
 }
 
 // 🔥 PANIER PRO (MODIFIÉ : gestion quantité)
@@ -162,7 +146,7 @@ loadProducts();
 window.advancedSearch = advancedSearch;
 
 // ======================================================
-// 🔥 AJOUT : MENU MOBILE STYLE s1web
+// 🔥 AJOUT : MENU MOBILE STYLE JUMIA
 // ======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -210,3 +194,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+// recherches sur mobile
+const mobileSearchBtn = document.getElementById("mobile-search-btn");
+
+if (mobileSearchBtn) {
+
+    mobileSearchBtn.addEventListener("click", () => {
+
+        const value = document
+            .getElementById("mobile-search")
+            .value
+            .toLowerCase();
+
+        document.getElementById("search").value = value;
+
+        advancedSearch();
+
+    });
+
+}
