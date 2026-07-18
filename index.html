@@ -1,18 +1,153 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boutique Fashion</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/sections.css">
+    <!-- ====================================================== -->
+    <!-- ENCODAGE -->
+    <!-- ====================================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="language" content="fr">
+    <meta name="author" content="Boutique Fashion">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <!-- ====================================================== -->
+    <!-- SEO -->
+    <!-- ====================================================== -->
+
+    <title>
+
+        Boutique Fashion | Boutique en ligne de vêtements, chaussures et accessoires aux Comores
+
+    </title>
+
+    <meta
+    name="description"
+    content="Boutique Fashion est votre boutique en ligne aux Comores. Achetez des vêtements, chaussures, accessoires, rideaux, draps et bien plus avec livraison à Grande Comore, Anjouan et Mohéli.">
+
+    <meta
+    name="keywords"
+    content="Boutique Fashion, vêtements Comores, chaussures Comores, mode Comores, boutique en ligne, Grande Comore, Anjouan, Mohéli, accessoires, shopping Comores">
+
+    <link rel="canonical" href="https://www.boutiquefashion.com/">
+
+    <!-- ====================================================== -->
+    <!-- OPEN GRAPH -->
+    <!-- ====================================================== -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Boutique Fashion">
+
+    <meta
+    property="og:description"
+    content="Découvrez les meilleures offres mode aux Comores.">
+
+    <meta
+    property="og:image"
+    content="https://www.boutiquefashion.com/assets/images/logo.png">
+
+    <meta property="og:url" content="https://www.boutiquefashion.com">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- ====================================================== -->
+    <!-- TWITTER -->
+    <!-- ====================================================== -->
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Boutique Fashion">
+    <meta name="twitter:description" content="La boutique mode des Comores.">
+    <meta
+    name="twitter:image"
+    content="https://www.boutiquefashion.com/assets/images/logo.png">
+
+    <!-- ====================================================== -->
+    <!-- FAVICON -->
+    <!-- ====================================================== -->
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <!-- ====================================================== -->
+    <!-- COULEUR NAVIGATEUR -->
+    <!-- ====================================================== -->
+
+    <meta name="theme-color" content="#ff6600">
+
+    <!-- ====================================================== -->
+    <!-- CSS -->
+    <!-- ====================================================== -->
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+
+    <!-- ====================================================== -->
+    <!-- SEO STRUCTURED DATA -->
+    <!-- ====================================================== -->
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"OnlineStore",
+
+      "name":"Boutique Fashion",
+
+      "url":"https://www.boutiquefashion.com",
+
+      "logo":"https://www.boutiquefashion.com/assets/images/logo.png",
+
+      "image":"https://www.boutiquefashion.com/assets/images/logo.png",
+
+      "description":"Boutique Fashion est une boutique en ligne spécialisée dans les vêtements, chaussures, téléphones, accessoires et articles de mode avec livraison dans les trois îles des Comores.",
+
+      "email":"mikdarsaouda@gmail.com",
+
+      "telephone":"+2694456911",
+
+      "currenciesAccepted":"EUR",
+
+      "paymentAccepted":[
+          "Visa",
+          "MasterCard",
+          "Mobile Money",
+          "Paiement à la livraison"
+      ],
+
+      "priceRange":"€€",
+
+      "address":{
+          "@type":"PostalAddress",
+          "addressCountry":"KM"
+      },
+
+      "areaServed":[
+          "Grande Comore",
+          "Anjouan",
+          "Mohéli"
+      ],
+
+      "sameAs":[
+
+          "https://facebook.com/",
+
+          "https://instagram.com/",
+
+          "https://tiktok.com/"
+
+      ]
+    }
+</script>
+
 </head>
 
 <body>
 
-<!-- 🔹 HEADER -->
+<!-- ====================================================== -->
+<!-- 🔥 NOUVEAU HEADER PRO STYLE PRO -->
+<!-- ====================================================== -->
+
 <header class="jumia-header">
 
     <!-- ========================= -->
@@ -89,50 +224,55 @@
 
 <div class="header-mobile">
 
-    <!-- ☰ MENU -->
-    <button id="menu-btn" class="mobile-icon">
-        ☰
-    </button>
+    <!-- Première ligne -->
+    <div class="mobile-top">
 
-    <!-- 🛍 LOGO -->
-    <a href="index.html" class="mobile-logo">
-        Boutique
-    </a>
+        <button id="menu-btn" class="mobile-icon">
+            ☰
+        </button>
 
-    <!-- 🔍 RECHERCHE -->
-    <div class="mobile-search-box">
+        <a href="index.html" class="mobile-logo">
+            Boutique Fashion
+        </a>
+
+        <a href="auth/login.html"
+           id="accountMenuMobile"
+           class="mobile-icon">
+
+            👤
+
+        </a>
+
+        <a href="cart.html"
+           class="mobile-icon mobile-cart">
+
+            🛒
+
+            <span id="cart-count-mobile">
+                0
+            </span>
+
+        </a>
+
+    </div>
+
+    <!-- Deuxième ligne -->
+    <div class="mobile-search">
 
         <input
             type="text"
             id="mobile-search"
-            placeholder="Rechercher..."
-        >
+            placeholder="Que recherchez-vous ?">
+
+        <button id="mobile-search-btn">
+
+            🔍
+
+        </button>
 
     </div>
 
-    <!-- 👤 COMPTE -->
-    <a href="auth/login.html"
-       id="accountMenuMobile"
-       class="mobile-icon">
-
-        👤
-
-    </a>
-
-    <!-- 🛒 PANIER -->
-    <a href="cart.html"
-       class="mobile-icon mobile-cart">
-
-        🛒
-
-        <span id="cart-count-mobile">
-            0
-        </span>
-
-    </a>
-
 </div>
-
 
 <!-- ====================================================== -->
 <!-- 🔥 CATÉGORIES MOBILE -->
@@ -140,13 +280,13 @@
 
 <div class="mobile-categories">
 
+    <button>Téléphones</button>
+
     <button>Mode</button>
 
-    <button>Nouvauté</button>
+    <button>Chaussures</button>
 
     <button>Beauté</button>
-
-    <button>Accessoires</button>
 
 </div>
 
@@ -193,6 +333,7 @@
 <!-- ====================================================== -->
 
 <div id="overlay" class="overlay"></div>
+
 
 <!-- ===================================================== -->
 <!-- 🔥 BARRE DE RÉASSURANCE -->
@@ -267,41 +408,49 @@
     </div>
 
 </section>
-    
+
+<!-- ====================================================== -->
 <!-- 🔹 BANNIÈRE -->
+<!-- ====================================================== -->
+
 <section class="banner">
+
     <h1>🛍️ Boutique Fashion</h1>
-    <p>Découvrez les meilleures tendances du moment</p>
+
+    <p>
+        Découvrez les meilleures tendances du moment
+    </p>
+
 </section>
 
-<!-- 🔹 RECHERCHE AVANCÉE -->
-<section class="search-section">
-    <!-- 🔍 Recherche texte -->
-    <input 
-        type="text" 
-        id="search" 
-        placeholder="🔍 Rechercher un produit..."
-    >
+
+<!-- ====================================================== -->
+<!-- 🔥 MODIFICATION : RECHERCHE AVANCÉE -->
+<!-- ====================================================== -->
+
+<section class="search-section advanced-search">
 
     <!-- 💰 Prix min -->
-    <input 
-        type="number" 
-        id="price-min" 
+    <input
+        type="number"
+        id="price-min"
         placeholder="Prix min"
     >
 
     <!-- 💰 Prix max -->
-    <input 
-        type="number" 
-        id="price-max" 
+    <input
+        type="number"
+        id="price-max"
         placeholder="Prix max"
     >
 
-    <!-- 🔘 Bouton recherche -->
-    <button onclick="advancedSearch()">Rechercher</button>
 </section>
 
-<!-- 🔹 FILTRES -->
+
+<!-- ====================================================== -->
+<!-- 🔥 MODIFICATION : FILTRES STYLE JUMIA -->
+<!-- ====================================================== -->
+
 <section class="filters" id="filters"></section>
 
 <!-- 🔹 PRODUITS -->
@@ -361,9 +510,13 @@
 <!-- 🔹 JS -->
 <script src="assets/js/whatsapp.js"></script>
 <script type="module" src="assets/js/script.js"></script>
-    
+<script type="module" src="assets/js/home.js"></script>
+<!-- ===================================================== -->
+<!-- AJOUT : Gestion automatique Connexion / Mon compte -->
+<!-- ===================================================== -->
+
 <script type="module">
-    
+
 import { auth } from "./firebase-config.js";
 
 import { onAuthStateChanged }
@@ -405,8 +558,7 @@ onAuthStateChanged(auth,(user)=>{
     }
 
 });
-    
-</script> 
-    
+
+</script>
 </body>
 </html>
