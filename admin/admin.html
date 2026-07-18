@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin - Boutique Fashion</title>
 <link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
 
@@ -23,18 +24,266 @@
 
     <h2>Admin - Gestion des produits</h2>
 
-    <!-- 🔍 RECHERCHE (NOUVEAU) -->
-    <input type="text" id="search-admin" placeholder="🔍 Rechercher un produit...">
+    <!-- ====================================================== -->
+<!-- 🔥 NOUVEAU FORMULAIRE PRODUIT PRO -->
+<!-- ====================================================== -->
 
-    <!-- 🔥 FORMULAIRE -->
-    <input type="text" id="name" placeholder="Nom du produit">
-    <input type="text" id="category" placeholder="Catégorie">
-    <input type="number" id="price" placeholder="Prix">
-    <input type="text" id="img" placeholder="URL image">
-    <input type="text" id="description" placeholder="Description du produit">
+<div class="admin-form">
 
-    <!-- 🔥 BOUTONS -->
-    <button onclick="addOrUpdateProduct()">Ajouter / Modifier</button>
+    <!-- ===================== -->
+    <!-- INFORMATIONS -->
+    <!-- ===================== -->
+
+    <div class="admin-card">
+
+        <h3>📦 Informations du produit</h3>
+
+        <label>Nom du produit *</label>
+        <input
+            type="text"
+            id="name"
+            placeholder="Ex : Nike Air Max">
+
+        <label>Catégorie *</label>
+
+        <select id="category">
+
+            <option value="">Choisir une catégorie</option>
+
+            <option value="femme">👗 Mode Femme</option>
+
+            <option value="homme">👕 Mode Homme</option>
+
+            <option value="chaussure">👟 Chaussures</option>
+
+            <option value="telephone">📱 Téléphones</option>
+
+            <option value="promotion">💥 Promotions</option>
+
+            <option value="best">🔥 Meilleures ventes</option>
+
+            <option value="new">🆕 Nouveautés</option>
+
+        </select>
+
+        <label>Prix actuel (€)</label>
+
+        <input
+            type="number"
+            id="price"
+            placeholder="79.99">
+
+        <!-- 🔥 AJOUT -->
+        <label>Ancien prix (€)</label>
+
+        <input
+            type="number"
+            id="oldPrice"
+            placeholder="99.99">
+
+        <!-- 🔥 AJOUT -->
+        <label>Stock disponible</label>
+
+        <input
+            type="number"
+            id="stock"
+            value="10">
+
+        <label>Description</label>
+
+        <textarea
+            id="description"
+            rows="5"
+            placeholder="Description du produit"></textarea>
+
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- VARIANTES PRODUIT -->
+    <!-- ====================================================== -->
+
+    <div class="variant-section">
+
+    <h3>Variantes du produit</h3>
+
+    <label>Type de variantes</label>
+
+    <select id="variantType">
+
+        <option value="">Aucune</option>
+
+        <option value="size">Tailles (Vêtements)</option>
+
+        <option value="shoe">Pointures (Chaussures)</option>
+
+        <option value="dimension">Dimensions (Rideaux, Draps...)</option>
+
+    </select>
+
+    <label>Valeurs</label>
+
+    <input
+    type="text"
+    id="variantValues"
+    placeholder="Ex : S,M,L,XL ou 38,39,40 ou 140x240,180x260">
+
+    <p class="variant-help">
+
+    Séparez les valeurs par une virgule.
+
+    </p>
+
+    <div class="variant-preview"></div>
+
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- COULEURS -->
+    <!-- ====================================================== -->
+
+    <h3>Couleurs disponibles</h3>
+
+    <div class="color-manager">
+
+        <div class="color-add">
+
+            <input
+            type="text"
+            id="colorName"
+            placeholder="Nom de la couleur">
+
+            <input
+            type="color"
+            id="colorPicker"
+            value="#000000">
+
+            <button
+            type="button"
+            id="addColor">
+
+               + Ajouter
+
+            </button>
+
+        </div>
+
+        <div id="colorsList"></div>
+
+    </div>
+    <!-- ===================== -->
+    <!-- GALERIE -->
+    <!-- ===================== -->
+
+    <div class="admin-card">
+
+        <h3>📷 Galerie du produit</h3>
+
+        <p class="gallery-info">
+
+            La première image sera utilisée
+            comme photo principale sur la page d'accueil.
+
+        </p>
+
+        <!-- 🔥 PHOTO PRINCIPALE -->
+
+        <label>Photo principale *</label>
+
+        <input
+            type="text"
+            id="img"
+            placeholder="images/products/nike-air-1.jpg">
+            <!-- 🔥 APERÇU PHOTO PRINCIPALE -->
+             
+            <div class="preview-box">
+
+            <img
+            id="previewMain"
+
+            src=""
+
+            alt="Aperçu principal">
+
+            </div>
+
+        <!-- ================= -->
+
+        <!-- ====================================================== -->
+        <!-- 🔥 GALERIE DYNAMIQUE -->
+        <!-- ====================================================== -->
+
+        <div id="galleryInputs"></div>
+
+        <!-- ================= -->
+
+        <button
+            type="button"
+            id="addImage">
+
+            ➕ Ajouter une autre photo
+
+        </button>
+
+    </div>
+
+    <!-- ===================== -->
+    <!-- OPTIONS -->
+    <!-- ===================== -->
+
+    <div class="admin-card">
+
+        <h3>⭐ Options</h3>
+
+        <label>Badge</label>
+
+        <select id="badge">
+
+            <option value="">Aucun</option>
+
+            <option value="🔥 Top Vente">🔥 Top Vente</option>
+
+            <option value="🆕 Nouveau">🆕 Nouveau</option>
+
+            <option value="💥 Promo">💥 Promo</option>
+
+        </select>
+
+        <label>Promotion (%)</label>
+
+        <input
+            type="number"
+            id="promo"
+            placeholder="20">
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="featured">
+
+            Produit vedette
+
+        </label>
+
+    </div>
+
+</div>
+
+<!-- ===================== -->
+<!-- BOUTON -->
+<!-- ===================== -->
+
+<div class="admin-actions">
+
+    <button
+        class="save-product-btn"
+        onclick="addOrUpdateProduct()">
+
+        💾 Enregistrer le produit
+
+    </button>
+
+</div>
 
     <hr>
 
@@ -44,6 +293,7 @@
 </section>
 
 <script type="module" src="admin.js"></script>
+<!-- 🔐 AJOUT : Protection de la page admin -->
 <script type="module" src="admin-auth.js"></script>
 
 </body>
