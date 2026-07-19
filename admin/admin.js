@@ -304,12 +304,7 @@ async function addOrUpdateProduct() {
 
     const price = parseFloat(priceInput.value);
 
-    let img = imgInput.value.trim();
-
-    // Corrige automatiquement les anciens chemins
-    img = img.replace("../images/", "images/");
-    img = img.replace("./images/", "images/");
-
+    const img = imgInput.value.trim();
     const description = descInput.value.trim();
 
     // ⭐ NOUVEAUX CHAMPS
@@ -344,12 +339,7 @@ async function addOrUpdateProduct() {
 
     const images = [];
 
-    let image = input.value.trim();
-
-    image = image.replace("../images/", "images/");
-    image = image.replace("./images/", "images/");
-
-    images.push(image);
+    images.push(input.value.trim());
 
     document.querySelectorAll(".gallery-image")
 
