@@ -193,6 +193,8 @@ async function loadProduct() {
         });
 
         buildRecommendations(p);
+        updateSEO(p);
+        addProductSchema(p);
     }
 
     let history=
@@ -216,6 +218,104 @@ async function loadProduct() {
     JSON.stringify(history)
 
     );
+}
+
+function updateSEO(product){
+
+    document.title =
+        product.name +
+        " | Boutique Fashion";
+
+    document
+    .getElementById("metaDescription")
+    .setAttribute(
+        "content",
+        product.description ||
+        product.name
+    );
+
+    document
+    .getElementById("metaKeywords")
+    .setAttribute(
+        "content",
+        `${product.name},
+        ${product.category},
+        Boutique Fashion`
+    );
+
+    document
+    .getElementById("ogTitle")
+    .setAttribute(
+        "content",
+        product.name
+    );
+
+    document
+    .getElementById("ogDescription")
+    .setAttribute(
+        "content",
+        product.description ||
+        product.name
+    );
+
+    document
+    .getElementById("ogImage")
+    .setAttribute(
+        "content",
+        product.img
+    );
+
+}
+
+function addProductSchema(product){
+
+    const script =
+    document.createElement("script");
+
+    script.type =
+    "application/ld+json";
+
+    script.textContent = JSON.stringify({
+
+        "@context":"https://schema.org",
+
+        "@type":"Product",
+
+        name:product.name,
+
+        image:[product.img],
+
+        description:product.description,
+
+        category:product.category,
+
+        brand:{
+            "@type":"Brand",
+            name:"Boutique Fashion"
+        },
+
+        offers:{
+            "@type":"Offer",
+
+            price:product.price,
+
+            priceCurrency:"EUR",
+
+            availability:
+            product.stock>0
+            ?
+
+            "https://schema.org/InStock"
+
+            :
+
+            "https://schema.org/OutOfStock"
+        }
+
+    });
+
+    document.head.appendChild(script);
+
 }
 
 function buildVariants(product){
