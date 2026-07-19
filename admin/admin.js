@@ -305,6 +305,7 @@ async function addOrUpdateProduct() {
     const price = parseFloat(priceInput.value);
 
     const img = imgInput.value.trim();
+
     const description = descInput.value.trim();
 
     // ⭐ NOUVEAUX CHAMPS
@@ -339,7 +340,7 @@ async function addOrUpdateProduct() {
 
     const images = [];
 
-    images.push(input.value.trim());
+    images.push(img);
 
     document.querySelectorAll(".gallery-image")
 
@@ -584,7 +585,7 @@ function addColor(){
 
     colorName.value="";
 
-    colorPicker.value = "";
+    colorPicker.value="#000000";
 
     renderColors();
 
@@ -647,7 +648,7 @@ function resetForm(){
     renderColors();
 
     colorName.value = "";
-    colorPicker.value = "";
+    colorPicker.value = "#000000";
 }
 
 // 🔥 GLOBAL
