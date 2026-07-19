@@ -304,7 +304,11 @@ async function addOrUpdateProduct() {
 
     const price = parseFloat(priceInput.value);
 
-    const img = imgInput.value.trim();
+    let img = imgInput.value.trim();
+
+    // Corrige automatiquement les anciens chemins
+    img = img.replace("../images/", "images/");
+    img = img.replace("./images/", "images/");
 
     const description = descInput.value.trim();
 
@@ -340,7 +344,12 @@ async function addOrUpdateProduct() {
 
     const images = [];
 
-    images.push(img);
+    let image = input.value.trim();
+
+    image = image.replace("../images/", "images/");
+    image = image.replace("./images/", "images/");
+
+    images.push(image);
 
     document.querySelectorAll(".gallery-image")
 
