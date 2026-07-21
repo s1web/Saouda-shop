@@ -30,6 +30,9 @@ document.getElementById("historyProducts");
 
 let selectedColorCode = null;
 let selectedColor = null;
+let currentProduct = null;
+
+let selectedVariants = [];
 
 async function loadProduct() {
     const docRef = doc(db, "products", id);
@@ -37,6 +40,7 @@ async function loadProduct() {
 
     if (docSnap.exists()) {
         const p = docSnap.data();
+        currentProduct = p;
 
         const gallery = document.getElementById("galleryImages");
         const mainImage = document.getElementById("mainProductImage");
@@ -114,7 +118,9 @@ async function loadProduct() {
         <!-- ====================================================== -->
 
         <div id="colorsContainer" class="product-colors"></div>
-
+        
+        ${buildVariantBuilder()}
+        
         <div class="buy-buttons">
 
         <button id="addBtn">
@@ -144,7 +150,9 @@ async function loadProduct() {
         buildVariants(p);
 
         buildColors(p);
-
+        buildVariantBuilder(p);
+        initVariantBuilder(p);
+ 
          // 🔥 ICI on ajoute l'événement (IMPORTANT)
         document.getElementById("addBtn").addEventListener("click", () => {
 
@@ -676,6 +684,333 @@ function buildColors(product){
     });
 
 }
+
+// ======================================================
+// CONSTRUCTEUR DES VARIANTES
+// ======================================================
+
+function buildVariantBuilder(){
+
+    return `
+
+    <div id="variantBuilder" class="variant-builder">
+
+        <div class="variant-builder-title">
+
+            Choisissez vos variantes
+
+        </div>
+
+        <div id="selectedVariants"
+             class="selected-variants">
+
+        </div>
+
+        <button
+            id="addVariantBtn"
+            type="button"
+            class="add-variant-btn">
+
+            ➕ Ajouter cette variante
+
+        </button>
+
+    </div>
+
+    `;
+
+}
+
+// ======================================================
+// INITIALISER LE CONSTRUCTEUR
+// ======================================================
+
+function initVariantBuilder(product){
+
+    const btn = document.getElementById("addVariantBtn");
+
+    if(!btn) return;
+
+    btn.addEventListener("click", ()=>{
+
+        addVariant(product);
+
+    });
+
+}
+
+// ======================================================
+// AJOUTER UNE VARIANTE
+// ======================================================
+
+function addVariant(product){
+
+    let color = "";
+
+    let size = "";
+
+    // -----------------------
+    // Couleur
+    // -----------------------
+
+    const selectedColor =
+    document.querySelector(".color-option.selected");
+
+    if(selectedColor){
+
+        color = selectedColor.dataset.name;
+
+    }
+
+    // -----------------------
+    // Taille
+    // -----------------------
+
+    const selectedSize =
+    document.querySelector(".variant-btn.selected");
+
+    if(selectedSize){
+
+        size = selectedSize.dataset.value;
+
+    }
+
+    // -----------------------
+    // Vérifications
+    // -----------------------
+
+    if(product.colors?.length && !color){
+
+        alert("Choisissez une couleur.");
+
+        return;
+
+    }
+
+    if(product.variantValues?.length && !size){
+
+        alert("Choisissez une taille.");
+
+        return;
+
+    }
+
+    // =====================================
+    // Vérifier si la combinaison existe
+    // =====================================
+
+    const existing = selectedVariants.find(v =>
+
+        v.color === color &&
+
+        v.size === size
+
+    );
+
+    // Si elle existe déjà
+
+    if(existing){
+
+        existing.quantity++;
+
+    }
+
+    // Sinon on l'ajoute
+
+    else{
+
+        selectedVariants.push({
+
+            color,
+
+            colorCode:selectedColorCode,
+
+            size,
+
+            quantity:1
+
+        });
+
+    }
+
+    renderSelectedVariants();
+
+}
+
+// ======================================================
+// AFFICHER LES VARIANTES
+// ======================================================
+
+function renderSelectedVariants(){
+
+    const container =
+
+    document.getElementById(
+
+        "selectedVariants"
+
+    );
+
+    if(!container) return;
+
+    container.innerHTML="";
+
+    selectedVariants.forEach(
+
+        (variant,index)=>{
+
+            container.innerHTML += `
+
+            <div class="variant-item">
+
+                <div class="variant-left">
+
+                    <div class="variant-color">
+
+                        <span
+                        class="variant-color-circle"
+                        style="background:${variant.colorCode};">
+                        </span>
+
+                        <span class="variant-color-name">
+
+                            ${variant.color || "-"}
+
+                        </span>
+
+                    </div>
+
+                    <div class="variant-size">
+
+                        <strong>${getVariantLabel(currentProduct)}</strong>
+
+                        <span>${variant.size || "-"}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="variant-right">
+
+                    <div class="variant-quantity">
+
+                        <button
+                        class="qty-btn"
+                        onclick="decreaseVariantQty(${index})">
+
+                             −
+
+                        </button>
+
+                        <span>
+
+                            ${variant.quantity}
+
+                        </span>
+
+                        <button
+                        class="qty-btn"
+                        onclick="increaseVariantQty(${index})">
+
+                             +
+
+                        </button>
+
+                    </div>
+
+                    <button
+                    class="variant-delete"
+                    onclick="removeVariant(${index})">
+
+                       🗑
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+
+    );
+
+}
+
+function getVariantLabel(product){
+
+    switch(product.variantType){
+
+        case "size":
+
+            return "Taille";
+
+        case "shoe":
+
+            return "Pointure";
+
+        case "dimension":
+
+            return "Dimension";
+
+        default:
+
+            return "Option";
+
+    }
+
+}
+
+// ======================================================
+// SUPPRIMER UNE VARIANTE
+// ======================================================
+
+function removeVariant(index){
+
+    selectedVariants.splice(index,1);
+
+    renderSelectedVariants();
+
+}
+
+// ======================================================
+// AUGMENTER LA QUANTITÉ
+// ======================================================
+
+function increaseVariantQty(index){
+
+    selectedVariants[index].quantity++;
+
+    renderSelectedVariants();
+
+}
+
+// ======================================================
+// DIMINUER LA QUANTITÉ
+// ======================================================
+
+function decreaseVariantQty(index){
+
+    if(selectedVariants[index].quantity > 1){
+
+        selectedVariants[index].quantity--;
+
+    }else{
+
+        selectedVariants.splice(index,1);
+
+    }
+
+    renderSelectedVariants();
+
+}
+
+window.increaseVariantQty = increaseVariantQty;
+
+window.decreaseVariantQty = decreaseVariantQty;
+
+window.removeVariant = removeVariant;
 
 // ==============================
 // ⭐ AVIS CLIENTS
