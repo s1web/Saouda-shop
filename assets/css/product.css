@@ -1,6 +1,4 @@
 /* =========================================================
-   PRODUCT.CSS
-   Boutique Fashion
    Style fiche produit Pro
 =========================================================*/
 
@@ -604,5 +602,257 @@ border-color:#ff6600;
     display:none;
 
 }
+
+}
+
+/* ====================================================== */
+/* VARIANT BUILDER */
+/* ====================================================== */
+
+.variant-builder{
+
+    margin:25px 0;
+
+    padding:20px;
+
+    background:#fff;
+
+    border:1px solid #e5e5e5;
+
+    border-radius:12px;
+
+}
+
+.variant-builder-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.add-variant-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff6600;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.add-variant-btn:hover{
+
+    background:#e55b00;
+
+}
+
+.selected-variants{
+
+    margin-top:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+/*======================================================*/
+/* VARIANTES */
+/*======================================================*/
+
+.variant-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px;
+
+    margin-top:15px;
+
+    border:1px solid #ececec;
+
+    border-radius:14px;
+
+    background:#fff;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+
+}
+
+.variant-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.variant-color{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.variant-color-circle{
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    border:2px solid #ddd;
+
+}
+
+.variant-color-name{
+
+    font-weight:600;
+
+    font-size:15px;
+
+}
+
+.variant-size{
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+.variant-size strong{
+
+    color:#111;
+
+    margin-right:8px;
+
+}
+
+.variant-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+/* ====================================================== */
+/* ACTIONS VARIANTE */
+/* ====================================================== */
+
+.variant-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.variant-quantity{
+
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+}
+
+.qty-btn{
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    background:#f5f5f5;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+.qty-btn:hover{
+
+    background:#ff6600;
+
+    color:#fff;
+
+}
+
+.variant-quantity span{
+
+    min-width:45px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+}
+
+.variant-delete{
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#e53935;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
 
 }
