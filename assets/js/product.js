@@ -406,29 +406,91 @@ ${value}
 
 }
 
-function addToCart(product) {
+function addToCart(product){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    const existing = cart.find(item =>
+    const existing = cart.find(
 
-        item.id===product.id &&
-
-        item.variant===product.variant &&
-
-        item.color===product.color
+        item => item.id === product.id
 
     );
 
-    if (existing) {
+    if(existing){
+
+        // Le produit existe déjà
+
         existing.quantity += 1;
-    } else {
-        cart.push({ ...product, quantity: 1 });
+
+        // Ajouter les nouvelles variantes
+
+        selectedVariants.forEach(newVariant=>{
+
+        const existingVariant =
+
+        existing.variants.find(v=>
+
+            v.color===newVariant.color &&
+
+            v.size===newVariant.size
+
+        );
+
+        if(existingVariant){
+
+            existingVariant.quantity +=
+
+            newVariant.quantity;
+
+        }
+
+        else{
+
+            existing.variants.push({
+
+                ...newVariant
+
+            });
+
+        }
+
+    });
+
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    else{
+
+        cart.push({
+
+            ...product,
+
+            quantity:1,
+
+            variants:
+
+            selectedVariants.map(v=>({
+
+                ...v
+
+            }))
+
+        });
+
+    }
+
+    localStorage.setItem(
+
+        "cart",
+
+        JSON.stringify(cart)
+
+    );
 
     alert("Produit ajouté au panier !");
+
+    selectedVariants = [];
+    renderSelectedVariants();
+
 }
 
 async function buildRecommendations(currentProduct){
