@@ -27,11 +27,93 @@ function displayCart(){
         const div=document.createElement("div");
         div.classList.add("cart-item");
 
-        div.innerHTML=`
-            <img src="${item.img}">
-            <div class="cart-info">
+        // ======================================
+        // VARIANTES DU PRODUIT
+        // ======================================
 
-                <h4>${item.name}</h4>
+        let variantsHTML = "";
+
+        if(item.variants && item.variants.length){
+
+            variantsHTML = `
+
+            <div class="cart-variants">
+
+            ${item.variants.map(v=>`
+
+            <div class="cart-variant-card">
+
+                <div class="variant-top">
+
+                    <div class="variant-color-info">
+
+                        <span
+                        class="cart-color"
+                        style="background:${v.colorCode};">
+
+                        </span>
+
+                        <span class="variant-color-name">
+
+                            ${v.color}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="variant-bottom">
+
+                    <span class="variant-badge">
+
+                        Taille ${v.size}
+
+                    </span>
+
+                    <span class="variant-badge qty-badge">
+
+                        × ${v.quantity}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            `).join("")}
+
+            </div>
+
+            `;
+
+        }
+
+        div.innerHTML = `
+
+        <div class="cart-card">
+
+            <!-- ========================= -->
+            <!-- IMAGE -->
+            <!-- ========================= -->
+
+            <div class="cart-image">
+
+                <img src="${item.img}" alt="${item.name}">
+
+            </div>
+
+            <!-- ========================= -->
+            <!-- INFORMATIONS -->
+            <!-- ========================= -->
+
+            <div class="cart-content">
+
+                <h3 class="cart-title">
+
+                    ${item.name}
+
+                </h3>
 
                 <p class="cart-category">
 
@@ -39,59 +121,39 @@ function displayCart(){
 
                 </p>
 
-                ${
-                    item.variant
-                    ?
+                <!-- Variantes -->
 
-                    `<p class="cart-variant">
+                ${variantsHTML}
 
-                        Taille :
-                        <strong>${item.variant}</strong>
+                <!-- Prix -->
 
-                    </p>`
+                <div class="cart-price">
 
-                    :
-
-                    ""
-                }
-
-                ${
-                    item.color
-                    ?
-
-                    `<div class="cart-color">
-
-                        Couleur :
-
-                        <span
-                        class="cart-color-dot"
-                        style="background:${item.colorCode || '#000'}">
-                        </span>
-
-                        <strong>${item.color}</strong>
-
-                    </div>`
-
-                   :
-
-                   ""
-                }
-
-                <div class="cart-unit-price">
-
-                    ${item.price} € × ${item.quantity}
+                    ${item.price} €
 
                 </div>
 
-                <div class="cart-actions">
+                <!-- Quantité -->
 
-                    <button onclick="decreaseQty(${index})">
+                <div class="cart-qty">
+
+                    <button
+                    class="qty-btn"
+                    onclick="decreaseQty(${index})">
 
                         −
 
                     </button>
 
-                    <button onclick="increaseQty(${index})">
+                    <span class="qty-value" >
+
+                        ${item.quantity}
+
+                    </span>
+
+                    <button
+                    class="qty-btn"
+                    onclick="increaseQty(${index})">
 
                         +
 
@@ -99,18 +161,11 @@ function displayCart(){
 
                 </div>
 
-            </div>
-
-            <div class="cart-right">
-
-                <div class="price">
-
-                    ${itemTotal.toFixed(2)} €
-
-                </div>
+                <!-- Supprimer -->
 
                 <button
-                class="remove-btn"
+                class="cart-delete"
+
                 onclick="removeFromCart(${index})">
 
                     🗑 Supprimer
@@ -118,6 +173,9 @@ function displayCart(){
                 </button>
 
             </div>
+
+        </div>
+
         `;
 
         cartItemsContainer.appendChild(div);
